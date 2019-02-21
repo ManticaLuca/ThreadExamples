@@ -77,7 +77,7 @@ public class DatiCondivisi {
     private Semaphore sem;
 
     public DatiCondivisi() {
-        sem = new Semaphore(-5);
+        sem = new Semaphore(-4);
         this.nClop1 = 0;
         this.nClop2 = 0;
         this.nClop3 = 0;
@@ -87,8 +87,8 @@ public class DatiCondivisi {
         schermo = new String[100000];
         primaPosizioneLibera = 0;
     }
-    
-    public Semaphore GetSem(){
+
+    public Semaphore GetSem() {
         return sem;
     }
 
@@ -213,7 +213,7 @@ public class DatiCondivisi {
      * con cui modificare il valore dell'attributo nClop5, che corrisponde al
      * numero di galoppi del cavallo5
      */
-     public synchronized void setnClop5(int nClop5) {
+    public synchronized void setnClop5(int nClop5) {
         this.nClop5 = nClop5;
     }
 
