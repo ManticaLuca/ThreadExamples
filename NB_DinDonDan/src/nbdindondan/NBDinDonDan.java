@@ -61,9 +61,9 @@ public class NBDinDonDan {
             th2.interrupt();
             th3.interrupt();
             
-            th1.join();
-            th2.join();
-            th3.join();
+            dati.GetSem().acquire();
+            dati.GetSem().acquire();
+            dati.GetSem().acquire();
             
 
             System.out.println("Qual è il suono che è stato richiamato più volte?");
