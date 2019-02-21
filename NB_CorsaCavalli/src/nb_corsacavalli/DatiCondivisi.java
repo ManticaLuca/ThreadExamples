@@ -96,7 +96,7 @@ public class DatiCondivisi {
     }
 
     /**
-     * @author Galimberti_Francesco
+     * @author Galimberti_Francesc
      *
      * @brief Metodo accessore di default che restituisce il numero di galoppi
      * del cavallo2
