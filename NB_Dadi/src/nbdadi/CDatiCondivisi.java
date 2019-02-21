@@ -5,6 +5,8 @@
  */
 package nbdadi;
 
+import java.util.concurrent.Semaphore;
+
 /**
  * @author Tosetti Luca
  *
@@ -82,7 +84,7 @@ public class CDatiCondivisi {
      * 
      * @return Valore dell'attributo Elementi
      */
-    public int getNumElementi() {
+    public synchronized int getNumElementi() {
         return Elementi;
     }
 
@@ -95,7 +97,7 @@ public class CDatiCondivisi {
      * @return valore dell'attributo primoDado
      *
      */
-    public int getPrimoDado() {
+    public synchronized int getPrimoDado() {
         return primoDado;
     }
 
@@ -108,7 +110,7 @@ public class CDatiCondivisi {
      * @param primoDado valore da assegnare all'attributo primoDado
      *
      */
-    public void setPrimoDado(int primoDado) {
+    public synchronized void setPrimoDado(int primoDado) {
         this.primoDado = primoDado;
     }
 
@@ -121,7 +123,7 @@ public class CDatiCondivisi {
      * @return valore dell'attributo secondoDado
      *
      */
-    public int getSecondoDado() {
+    public synchronized int getSecondoDado() {
         return secondoDado;
     }
 
@@ -134,7 +136,7 @@ public class CDatiCondivisi {
      * @param secondoDado valore da assegnare all'attributo secondoDado
      *
      */
-    public void setSecondoDado(int secondoDado) {
+    public synchronized void setSecondoDado(int secondoDado) {
         this.secondoDado = secondoDado;
     }
 
@@ -147,7 +149,7 @@ public class CDatiCondivisi {
      * @return valore dell'attributo terzoDado
      *
      */
-    public int getTerzoDado() {
+    public synchronized int getTerzoDado() {
         return terzoDado;
     }
 
@@ -160,7 +162,7 @@ public class CDatiCondivisi {
      * @param terzoDado valore da assegnare all'attributo terzoDado
      *
      */
-    public void setTerzoDado(int terzoDado) {
+    public synchronized void setTerzoDado(int terzoDado) {
         this.terzoDado = terzoDado;
     }
     
@@ -174,7 +176,7 @@ public class CDatiCondivisi {
      * 
      * @return Valore contenuto in una posizione dell'attributo schermo
      */
-    public String getRiga(int posizione) {
+    public synchronized String getRiga(int posizione) {
         return schermo[posizione];
     }
 
@@ -185,7 +187,7 @@ public class CDatiCondivisi {
      * fino a quando si arriva al numero di linee salvate nello stesso attributo.
      * 
      */
-    public void VisualizzaSchermo() {
+    public synchronized void VisualizzaSchermo() {
         System.out.println("--------------------------------");
         for (int i = 0; i < Elementi; i++) {
             if (schermo[i].equals("")) {
@@ -204,9 +206,14 @@ public class CDatiCondivisi {
      * 
      * @param str Stringa in cui è contenuto il valore della linea di testo da memorizzare.
      */
-    public void aggiungiStringa(String str) {
+    public synchronized void aggiungiStringa(String str) {
         schermo[Elementi] = str;
         Elementi++;
+    }
+    
+    private Semaphore sem = new Semaphore(-3);
+    public synchronized Semaphore GetSem(){
+        return sem;
     }
 
 }
